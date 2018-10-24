@@ -1,0 +1,57 @@
+unit FACTORIAL;
+
+interface
+
+uses
+Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+Buttons, StdCtrls;
+
+type
+tform1 = class(tform)
+label1: tlabel;
+label2: tlabel;
+num1: tedit;
+factorial: tbutton;
+borrar: tbutton;
+cerrar: tbitbtn;
+solucion: tlabel;
+procedure cerrarclick(sender: tobject);
+procedure borrarclick(sender: tobject);
+procedure factorialclick(sender: tobject);
+private
+{ private declarations }
+public
+{ public declarations }
+end;
+
+var
+form1: tform1;
+
+implementation
+
+{$r *.dfm}
+
+procedure tform1.cerrarclick(sender: tobject);
+begin
+close;
+end;
+
+procedure tform1.borrarclick(sender: tobject);
+begin
+num1.clear;
+solucion.caption:='';
+num1.setfocus;
+end;
+
+procedure tform1.factorialclick(sender: tobject);
+var
+n,factorial,i:integer;
+begin
+n:=strtoint(num1.text);
+factorial:=1;
+for i:=1 to n do
+factorial:=factorial*i;
+solucion.caption:='el factorial de '+num1.text+' es =                              '+inttostr(factorial);
+end;
+
+end.
